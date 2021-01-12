@@ -1,0 +1,19 @@
+#!/bin/sh
+
+gstreplace=gststupidfilter
+gstreplace_01=gstsmartfilter
+metareplace=stupidsmartmeta
+pkg=gstreamer-base-1.0
+incdir=/home/josh/workspace/projects/gst-customplugin
+
+echo pkg is $pkg
+
+g++ -Wall -Werror -fPIC $CPPFLAGS $(pkg-config --cflags gstreamer-1.0 $pkg opencv) -c -o $metareplace.o $metareplace.c
+if test $? -ne 0; then
+    exit 1
+fi
+
+g++ -shared -o lib$metareplace.so $metareplace.o $(pkg-config --libs gstreamer-1.0 $pkg opencv)
+if test $? -ne 0; then
+    exit 1
+fi

@@ -1,0 +1,12 @@
+#Ignore these folders/files
+data/
+build*/
+ignore/
+log/*.log
+#Do NOT ignore these files
+!inc/
+!src/
+!tests/
+!scripts/
+!config/
+!log/
